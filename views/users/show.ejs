@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/logout">logout</a>
+    <div>This will be a cool graphic!</div>
+    <!-- code for drop down is in goals controller -->
+    
+    <!-- button needs to be outside of form or it is automatically 
+    linked to the input fields on the form and routing dosen't work -->
+    <button onclick="location.href='goals/new'">Add New Goal</button>
+
+    <form>
+        <label>Add Savings:</label>
+        <input type="text" name="goal">
+        <!-- this needs to be a drop down eventually -->
+        <label>Apply Savings to a Goal:</label>
+        <input type="text" name="savingsPurpose">
+        <input type="submit" value="Submit Savings Instance">
+    </form>
+    <p><%= user %> </p>
+
+</body>
+</html>

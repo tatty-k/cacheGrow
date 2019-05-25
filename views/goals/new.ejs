@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/users/<%= user.id %>/goals" method="POST">
+        <label>Savings Goal:</label>
+        <input type="text" name="goal">
+        <!-- this needs to be a drop down eventually -->
+        <label>Apply Savings to a Goal:</label>
+        <input type="text" name="savingsPurpose">
+        <input type="submit" value="Submit Savings and go to Profile">
+    </form>
+    <button onclick="location.href='users'">Cancel</button>
+</body>
+</html>
