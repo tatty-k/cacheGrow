@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+<%- include('../partials/header') %>
+
     <form action="/users/<%= user.id %>/goals" method="POST">
         <label>Savings Goal:</label>
         <input type="text" name="goal">
@@ -16,5 +9,5 @@
         <input type="submit" value="Submit Savings and go to Profile">
     </form>
     <button onclick="location.href='users'">Cancel</button>
-</body>
-</html>
+
+<%- include('../partials/footer') %>

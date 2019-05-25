@@ -18,6 +18,7 @@ function create(req, res){
     Goal.create(req.body, function(err, goal){
         console.log(req.body);
         console.log(`User goal input: ${goal}`);
+        
         res.redirect('/users');
     })       
 }

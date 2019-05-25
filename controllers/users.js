@@ -7,8 +7,7 @@ module.exports = {
 
 //goal array isn't getting populated
 function show(req, res){
-    User.findById(req.user.id)
-    .populate('goal').exec(function(err, user) {
+    User.findById(req.user.id).populate('goal').exec(function(err, user) {
         console.log(`user: ${user}`);
         console.log(`user goal: ${user.goal[0]}`);
         res.render('users/show', {

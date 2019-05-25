@@ -1,11 +1,24 @@
+* {
+  box-sizing: border-box;
+
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: #E7FFCF
+  margin: 0;
+  height: 100 vh;
+  background-color:#608041;
 }
 
 a {
-  color: #00B7FF;
+  color: #BFFF81;
+}
+
+nav {
+  background-color: #738067;;
+}
+
+img{
+  border-radius: 30px;
 }
 
 #unassigned{
@@ -13,4 +26,5 @@ a {
   color: #BFFF81;
   color: #738067;
   color: #9ACC68;
+  color: #E7FFCF;
 }
