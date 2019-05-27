@@ -10,7 +10,7 @@ let savingsSchema = new Schema({
 
 let goalSchema = new Schema({
     goal: {
-        type:Number,
+        type: Number,
         required: true
     },
     savingsPurpose: {
@@ -22,5 +22,5 @@ let goalSchema = new Schema({
     // progress: [savingsSchema.amount]
 })
 
-module.exports = mongoose.model('Goal', goalSchema)
+module.exports = mongoose.model('Goal', goalSchema);
     

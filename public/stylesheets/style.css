@@ -6,7 +6,8 @@
 body {
   margin: 0;
   height: 100 vh;
-  background-color:#608041;
+  background-color: white;
+  display: grid;
 }
 
 a {
@@ -14,11 +15,38 @@ a {
 }
 
 nav {
-  background-color: #738067;;
+  background-color: #738067;
 }
 
-img{
-  border-radius: 30px;
+#index-body {
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
+}
+
+#index-body > nav {
+  grid-area: nav;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+button {
+  background-color: #9ACC68;
+  border-radius: 5px;
+  margin: 20px;
+  border: solid white 5px;
+}
+
+#jar-o-money {
+  background-image: url("/images/money-jar.png");
+}
+
+img {
+  border-radius: 250px;
+  border: solid #9ACC68 20px;
+  margin: 20px;
 }
 
 #unassigned{

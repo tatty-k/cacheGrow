@@ -19,7 +19,7 @@ passport.use(new GoogleStrategy({
                     googleId: profile.id
                 });
                 newUser.save(function(err){
-                    if(err) return eb(err); 
+                    if(err) return cb(err); 
                     return cb(null, newUser);
                 })
             }

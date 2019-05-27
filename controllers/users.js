@@ -5,14 +5,20 @@ module.exports = {
     show
 }
 
-//goal array isn't getting populated
 function show(req, res){
-    User.findById(req.user.id).populate('goal').exec(function(err, user) {
+    //not sure if .id needs to be here
+    User.findById(req.user.id)
+    .populate('goals').exec(function(err, user) {
         console.log(`user: ${user}`);
-        console.log(`user goal: ${user.goal[0]}`);
+        console.log(user.goals);
+        console.log(user.goals.savingsPurpose);
         res.render('users/show', {
             name: req.query.name,
-            user: req.user
+            user: req.user,
+            user
+
+            //not storing in db?
+            // email: req.query.email
         });
     });
 }

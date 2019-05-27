@@ -3,9 +3,18 @@ let Schema = mongoose.Schema;
 
 let userSchema = new Schema({
     name: String,
-    googleId: String,
+    googleId: {
+        type: String,
+        required: true 
+    },
+    // email: {
+    //     type: String,
+    //     required: true,
+        //ensures that users can't sign up twice
+        // unique: true
+    // },
     //connection to goal -- set up ok??
-    goal:[{ type: Schema.Types.ObjectId, ref: 'Goal'}]
+    goals:[{ type: Schema.Types.ObjectId, ref: 'Goal'}]
 })
 
-module.exports = mongoose.model('User', userSchema)
+module.exports = mongoose.model('User', userSchema);

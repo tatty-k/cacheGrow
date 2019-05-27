@@ -5,8 +5,20 @@
     
     <!-- button needs to be outside of form or it is automatically 
     linked to the input fields on the form and routing dosen't work -->
+    
     <button onclick="location.href='goals/new'">Add New Goal</button>
-
+   
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            See Your Savings Goals
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% user.goals.forEach(function(g) { %>
+            <a class="dropdown-item" href="#"><%= g.savingsPurpose %></a>
+            <% }); %>
+        </div>
+    </div>
+   
     <form>
         <label>Add Savings:</label>
         <input type="text" name="goal">
