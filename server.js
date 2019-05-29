@@ -5,6 +5,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var passport = require('passport');
 var cookieParser = require('cookie-parser');
+var methodOverride = require('method-override');
 
 require('dotenv').config();
 
@@ -40,8 +41,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//do I need this middleware?
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(methodOverride('_method'));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

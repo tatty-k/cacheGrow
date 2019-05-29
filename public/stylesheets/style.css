@@ -1,31 +1,16 @@
-* {
-  box-sizing: border-box;
-
-}
-
 body {
   margin: 0;
   height: 100 vh;
   background-color: white;
   display: grid;
-}
-
-a {
-  color: #BFFF81;
-}
-
-nav {
-  background-color: #738067;
-}
-
-#index-body {
   grid-template-rows: 50px 1fr;
   grid-template-areas: 
     "nav"
     "main"
 }
 
-#index-body > nav {
+nav {
+  background-color: #738067;
   grid-area: nav;
   display: flex;
   align-items: center;
@@ -38,6 +23,50 @@ button {
   margin: 20px;
   border: solid white 5px;
 }
+
+main {
+  display: grid;
+}
+
+#user-profile {
+  grid-template-rows: 4fr 1fr 1fr 1fr;
+  grid-template-areas:
+  "currentGoal"
+  "new-goal-button"
+  "dropdown"
+  "form"
+}
+
+#currentGoal {
+  grid-area: currentGoal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#new-goal-button {
+  grid-area: new-goal-button;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown {
+  grid-area: dropdown;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  grid-area: form;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 
 #jar-o-money {
   background-image: url("/images/money-jar.png");

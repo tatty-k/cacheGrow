@@ -2,7 +2,8 @@ let Goal = require('../models/goal');
 
 module.exports = {
     new: newGoal,
-    create
+    create,
+    createSavings
 }
 
 function newGoal(req, res){
@@ -25,4 +26,7 @@ function create(req, res){
     })       
 }
 
+function createSavings(req, res){
+    console.log(req.body);
+}
 

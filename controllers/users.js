@@ -2,7 +2,8 @@ let User = require('../models/user');
 let Goal = require('../models/goal')
 
 module.exports = {
-    show
+    show,
+    create
 }
 
 function show(req, res){
@@ -10,15 +11,18 @@ function show(req, res){
     User.findById(req.user.id)
     .populate('goals').exec(function(err, user) {
         console.log(`user: ${user}`);
-        console.log(user.goals);
-        console.log(user.goals.savingsPurpose);
+        // Goal.findPercentComplete(user)
         res.render('users/show', {
             name: req.query.name,
-            user: req.user,
-            user
-
+            user,
+            // percent
             //not storing in db?
             // email: req.query.email
         });
     });
+}
+
+function create(req, res){
+    //push into goal??
+    Goal.progress.push(req.body)
 }
