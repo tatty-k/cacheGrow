@@ -1,87 +1,33 @@
 <%- include('../partials/header') %>
-<main id="user-profile">
 
-    <button id="currentGoal">
-        <div id="currentGoal-progress"><% %></div>
-                
-        <!-- button needs to be outside of form or it is automatically 
-        linked to the input fields on the form and routing dosen't work -->
-        
-        <p id="currentGoal-name">Update me!</p>
-        </button>
+<main id="user-profile">
+    
+    <h1> Welcome <%= user.name%></h1>
 
     <button onclick="location.href='goals/new'" id="new-goal-button">Add New Goal</button>
-   
-    <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            See Your Savings Goals
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>Cache Name</th>
+                <th>Progress</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
             <% user.goals.forEach(function(g) { %>
-                <a class="dropdown-goal dropdown-item" data-goalId="<%= g._id %>" data-goalName ="<%= g.savingsPurpose %>" data-goalProgress ="<%= g.progress %>" href="#"><%= g.savingsPurpose %> <%= g.percentToComplete %></a>
+            <tr>
+                <td> <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
+                    <button type="submit">Delete Cache</button>
+                    </form>
+                </td>
+                <td> <%= g.savingsPurpose %> </td>
+                <td> <%= g.percentToComplete %> % </td>
+                <td> <button onclick="location.href='/users/goals/<%= g._id %>/savings/new'">View Cache</button> </td>
+            </tr>
             <% }); %>
-        </div>
-    </div>
-   
-    <form action="/users/goals/:id/savings" method="POST"> 
-        <div class="row">
-            <div class="col">
-                <input type="text" name="savings" placeholder="New Savings">
-            </div> 
-            <div class="col">
-                <select>
-                    <% user.goals.forEach(function(g) { %>
-                    <option key=<%= g._id%>> <%= g.savingsPurpose %> - <%= g._id%></option>
-                    <% }) %>
-                </select>
-                <input hidden id="hidden" type="text" value=""> 
-            </div>
-            <input type="submit" value="Submit Savings Instance"> 
-        </div>
-    </form>
-</main>
-
-<script>
-    let currentGoalName = document.querySelector('#currentGoal-name');
-    let currentGoalProgress = document.querySelector('#currentGoal-progress');
-    let listOfGoals = document.querySelectorAll('.dropdown-goal');
-    let savingsPurpose = document.querySelector('option');
-    let hiddenId = document.querySelector('hidden'); 
-    
-    function getHiddenId(evt) {
-        hiddenInput.setAttribute('value') = savingsPurpose.getAttribute('key')     
-        console.log(hiddenInput.getAttribute('value'));
-        }
-        
-    savingsPurpose.addEventListener('click', getHiddenId);
-    // access key attribute .attr()
-    // #hiddenID.attr('value') = key
-
-    //loops through DOM nodes selected from dropdown
-    for (i = 0; i < listOfGoals.length; i++) {
-        listOfGoals[i].addEventListener('click', updateGoalBox);
-        
-    }
-
-    function updateGoalBox(evt) {
-        let goalId = evt.target.getAttribute('data-goalId');
-        let goalName = evt.target.getAttribute('data-goalName');
-        let goalProgress = evt.target.getAttribute('data-goalProgress');
-
-        currentGoalName.innerText = goalName;
-
-        if (goalProgress.length===0){
-            currentGoalProgress.innerText = "0%";
-        } else {
-            currentGoalProgress.innerText = `${goal.goalId.findPercentComplete(user)}`;
-        }
-    
-        console.log(goalProgress);
-        console.log(typeof goalProgress);
-        console.log(parseInt(goalProgress));
-        console.log(typeof parseInt(goalProgress));
-
-    }
-</script>
+        </tbody>
+    </table>
 
 <%- include('../partials/footer') %>

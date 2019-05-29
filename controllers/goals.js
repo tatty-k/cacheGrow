@@ -1,9 +1,12 @@
+let User = require('../models/user');
 let Goal = require('../models/goal');
 
 module.exports = {
     new: newGoal,
     create,
-    createSavings
+    delete: deleteGoal,
+    createSavings,
+    show
 }
 
 function newGoal(req, res){
@@ -13,8 +16,6 @@ function newGoal(req, res){
     });
 }
 
-//this function dosen't store data in the db unless the
-//inline function is in the create funciton. Why? 
 function create(req, res){
     Goal.create(req.body, function(err, goal){
         req.user.goals.push(goal._id);
@@ -24,6 +25,20 @@ function create(req, res){
         res.redirect('/users');
         });    
     })       
+}
+
+function deleteGoal(req, res){
+    Goal.findByIdAndRemove(req.params.id, function(err){
+        res.redirect('/users');
+    });  
+}
+
+function show(req, res){
+    Goal.findById(req.params.id, function(err, goal){
+        res.render('goals/show', {
+            goal
+        })       
+    });
 }
 
 function createSavings(req, res){
