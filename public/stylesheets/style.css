@@ -3,7 +3,7 @@ body {
   height: 100vh;
   background-color: white;
   display: grid;
-  grid-template-rows: 50px 1fr;
+  grid-template-rows: 80px 1fr;
   grid-template-areas: 
     "nav"
     "main"
@@ -14,14 +14,14 @@ nav {
   grid-area: nav;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 20px 0 20px;
 }
 
 button {
   background-color: #9ACC68;
   border-radius: 5px;
-  margin: 20px;
+  margin: 0 20px;
   border: white 5px;
 }
 
@@ -33,13 +33,27 @@ form {
   margin: 0 50px;
 }
 
-.col {
-  margin: 20px;
-  font-size: 20px;
+table {
+  font-size: 15px;
 }
 
-.progress{
+td, th {
+  text-align: center;
+}
+
+.col {
+  margin: 20px;
+  font-size: 15px;
+}
+
+.progress {
   height: 200px;
+}
+
+#savings-timeline {
+  font-size: 30px;
+  text-align: center;
+  margin: 0 0 0 20;
 }
 
 #index-body {
@@ -85,21 +99,6 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-table {
-  grid-area: cache-table;
-  font-size: 20px;
-}
-
-table td {
-  padding: 5px;
-  border-bottom: 2px solid #424748;
-}
-
-table td {
-  padding: 10px;
-  text-align: center;
 }
 
 #jar-o-money {

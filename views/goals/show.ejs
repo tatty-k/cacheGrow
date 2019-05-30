@@ -2,7 +2,7 @@
 
 <main id="single-goal-view">
 
-    <div class="progress">Goal Progress Visual</div>
+    <div class="progress"> <%= goal.percentToComplete %> </div>
     
     <form action="/users/goals/<%=goal._id%>/savings" method="POST"> 
         <div class="form-group">   
@@ -20,29 +20,24 @@
         </div>
     </form>
 
-    <table>
+    <div id="savings-timeline">Savings Timeline</div>
+    
+    <table class="table">
             <thead>
                 <tr>
-                    <th>Saving Amount</th>
-                    <th>Saving Strategy</th>
-                    <th></th>
+                    <th scope="col">Saving Amount</th>
+                    <th scope="col">Saving Strategy</th>
                 </tr>
             </thead>
             <tbody>
                 <% goal.progress.forEach(function(s) { %>
                 <tr>
-                    <td> <form action="/users/goals/<%= s._id %>?_method=DELETE" method="POST">
-                        <button type="submit">Delete Savings</button>
-                        </form>
-                    </td>
-                    <td> <%= s.savingAmount %> $ </td>
+                    <td scope="row"> $ <%= s.savingAmount %> </td>
                     <td> <%= s.savingStrategy %> </td>
                 </tr>
                 <% }); %>
             </tbody>
         </table>
-
-    <button onclick="location.href='/users'">Back to Profile</button>   
 
 </main>
 <%- include('../partials/footer') %>        

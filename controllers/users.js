@@ -2,18 +2,10 @@ let User = require('../models/user');
 let Goal = require('../models/goal')
 
 module.exports = {
-    // index,
     show,
     create,
     update
 }
-// needed?
-// function index(req, res){
-//     res.render('index', {
-//         user: req.user,
-//         name: req.query.name
-//     });
-// }
 
 function show(req, res){
     //not sure if .id needs to be here

@@ -47,6 +47,14 @@ function createSavings(req, res){
     Goal.findById(req.params.id, function(err, goal){
         console.log(`createSavings: ${goal}`);
         goal.progress.push(req.body);
+        
+        // TODO: helper function would help here
+        const totalSavings = goal.progress.reduce(function(preVal, curVal){
+            return parseInt(preVal) + parseInt(curVal.savingAmount);
+        }, 0)
+        const percent = (totalSavings/parseInt(goal.goal))*100;
+        //this needs to be moved into controllers when I edit and delete goals 
+        goal.percentToComplete = Math.floor(percent);
 
         goal.save(function(err){
             if (err) {
@@ -55,7 +63,8 @@ function createSavings(req, res){
             }
             res.redirect(`/users/goals/${goal._id}/savings/new`);
         });
-    });   
+    });
+    
 }
 
 function edit(req, res){

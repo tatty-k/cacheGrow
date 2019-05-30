@@ -4,7 +4,9 @@ let passport = require('passport');
 
 /* GET to landing page */
 router.get('/', (req, res)=>{
-    res.render('index');
+    res.render('index', {
+        user: req.user
+    });
 });
 
 /* GET inidiviual users page*/
