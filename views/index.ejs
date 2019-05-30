@@ -11,10 +11,14 @@
 <body id="index-body">
     <nav id="index-nav">
       <!-- onclick calls javascript, location.href is javascript that sets up an automatic GET request -->
-      <button onclick="location.href='/auth/google'" id="login-with-google">Login with Google</button>
+      <% if (user) { %>
+        <button onclick="location.href='/logout'" id="login-with-google">Log Out</button>
+      <% } else { %>
+        <button onclick="location.href='/auth/google'" id="login-with-google">Login with Google</button>
+      <% } %>
     </nav>  
-    
-    <h1>CacheGrow</h1>
+
+    <h1>cacheGrow</h1>
 
   </body>
   </html>

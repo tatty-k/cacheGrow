@@ -2,9 +2,19 @@ let User = require('../models/user');
 let Goal = require('../models/goal')
 
 module.exports = {
+    index,
     show,
     create,
     update
+}
+function index(req, res){
+    res.render('index', {
+        user: req.user,
+        name: req.query.name
+        // percent
+        //not storing in db?
+        // email: req.query.email
+    });
 }
 
 function show(req, res){
