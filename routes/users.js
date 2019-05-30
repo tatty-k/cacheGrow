@@ -6,6 +6,8 @@ router.get('/', isLoggedIn, usersCtrl.show);
 
 router.post('/', usersCtrl.create);
 
+router.put('/', usersCtrl.update);
+
 function isLoggedIn(req, res, next){
     if (req.isAuthenticated() ) return next();
     res.redirect('/auth/google');

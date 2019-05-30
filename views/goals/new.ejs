@@ -1,13 +1,15 @@
 <%- include('../partials/header') %>
+
 <main id="new-goal">
     <form action="/users/<%= user.id %>/goals" method="POST">
         <label>Savings Goal:</label>
         <input type="text" name="goal">
         <label>Why are you saving?:</label>
         <input type="text" name="savingsPurpose">
-        <input type="submit" value="Submit Savings and go to Profile">
+        <input type="submit" value="Update Goal">
     </form>
 
     <button onclick="location.href='/users'">Cancel</button>
 </main>
+
 <%- include('../partials/footer') %>

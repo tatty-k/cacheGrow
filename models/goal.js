@@ -5,6 +5,10 @@ let savingsSchema = new Schema({
     savingAmount: {
         type: Number,
         required: true
+    },
+    savingStrategy: {
+        type: String,
+        required: true
     }
 
 })
@@ -26,18 +30,18 @@ let goalSchema = new Schema({
     }
 })
 
-goalSchema.methods.findPercentComplete = function(user) {
-    user.goals.forEach(function(goal) {
-        const totalSavings = goal.progress.reduce(function(preVal, curVal){
-            return parseInt(preVal) + parseInt(curVal.savingAmount);
-        }, 0)
-        const percent = (totalSavings/parseInt(goal.goal))*100;
-        //this needs to be moved into controllers when I edit and delete goals 
-        goal.percentToComplete = percent
-        goal.save()
-    })
-    return 0
-}
+// goalSchema.methods.findPercentComplete = function(user) {
+//     user.goals.forEach(function(goal) {
+//         const totalSavings = goal.progress.reduce(function(preVal, curVal){
+//             return parseInt(preVal) + parseInt(curVal.savingAmount);
+//         }, 0)
+//         const percent = (totalSavings/parseInt(goal.goal))*100;
+//         //this needs to be moved into controllers when I edit and delete goals 
+//         goal.percentToComplete = percent
+//         goal.save()
+//     })
+//     return 0
+// }
 
 module.exports = mongoose.model('Goal', goalSchema);
     

@@ -5,8 +5,9 @@ module.exports = {
     new: newGoal,
     create,
     delete: deleteGoal,
+    show,
     createSavings,
-    show
+    edit
 }
 
 function newGoal(req, res){
@@ -37,11 +38,33 @@ function show(req, res){
     Goal.findById(req.params.id, function(err, goal){
         res.render('goals/show', {
             goal
-        })       
+        });      
     });
 }
 
 function createSavings(req, res){
-    console.log(req.body);
+    
+    Goal.findById(req.params.id, function(err, goal){
+        console.log(`createSavings: ${goal}`);
+        goal.progress.push(req.body);
+
+        goal.save(function(err){
+            if (err) {
+                console.log(err)
+                res.redirect(`/users/goals/${goal._id}/savings/new`);
+            }
+            res.redirect(`/users/goals/${goal._id}/savings/new`);
+        });
+    });   
+}
+
+function edit(req, res){
+    //do I need to define this varable and send it to the edit view? 
+    Goal.findById(req.params.id, function(err, goal){
+        console.log(goal);
+        res.render('goals/edit', {
+            goal
+        });
+    });
 }
 

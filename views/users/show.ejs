@@ -5,7 +5,7 @@
     <h1> Welcome <%= user.name%></h1>
 
     <button onclick="location.href='goals/new'" id="new-goal-button">Add New Goal</button>
-
+    
     <table>
         <thead>
             <tr>
@@ -13,18 +13,25 @@
                 <th>Cache Name</th>
                 <th>Progress</th>
                 <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <% user.goals.forEach(function(g) { %>
             <tr>
-                <td> <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
-                    <button type="submit">Delete Cache</button>
-                    </form>
-                </td>
+                
                 <td> <%= g.savingsPurpose %> </td>
                 <td> <%= g.percentToComplete %> % </td>
                 <td> <button onclick="location.href='/users/goals/<%= g._id %>/savings/new'">View Cache</button> </td>
+                <td>
+                    <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
+                            <button type="submit">Delete Cache</button>
+                    </form>
+                </td>
+                <td> <form action="/users/goals/<%= g.id%>/edit?_method=" method="GET">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
             </tr>
             <% }); %>
         </tbody>

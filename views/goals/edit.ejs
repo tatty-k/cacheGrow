@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+
+<main id="new-goal">
+    <!-- correct HTTP VERB? -->
+    <form action="/users?_method=PUT" method="POST">
+        <label>Savings Goal:</label>
+        <input type="text" name="goal" value="<%= goal.goal %>">
+        <label>Why are you saving?:</label>
+        <input type="text" name="savingsPurpose" value="<%= goal.savingsPurpose%>">
+        <input hidden type="text" name="id" value="<%= goal._id %>">
+        <div><%= goal._id%></div>
+        <input type="submit" value="Submit Savings and go to Profile">
+    </form>
+
+    <button onclick="location.href='/users'">Cancel</button>
+</main>
+
+<%- include('../partials/footer') %>

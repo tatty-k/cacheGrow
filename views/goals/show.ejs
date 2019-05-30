@@ -1,6 +1,43 @@
 <%- include('../partials/header') %>
-<main id="goal-timeline">
-    <h1>show: savings timeline etc/h1>
-    <h1>id: <%= goal%></h1>
+
+<main id="single-goal-view">
+
+    <div>Goal Progress Visual</div>
+
+    <form action="/users/goals/<%=goal._id%>/savings" method="POST"> 
+                Amount Saved:
+                <input type="text" name="savingAmount" placeholder="How much did you save?">
+            </div> 
+                Saving Strategy:
+                <input type="text" name="savingStrategy" placeholder="What strategy did you use to save?"> 
+            </div>
+            <input type="submit" value="Submit Savings to Cache"> 
+        </div>
+    </form>
+
+    <table>
+            <thead>
+                <tr>
+                    <th>Saving Amount</th>
+                    <th>Saving Strategy</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% goal.progress.forEach(function(s) { %>
+                <tr>
+                    <td> <form action="/users/goals/<%= s._id %>?_method=DELETE" method="POST">
+                        <button type="submit">Delete Savings</button>
+                        </form>
+                    </td>
+                    <td> <%= s.savingAmount %> $ </td>
+                    <td> <%= s.savingStrategy %> </td>
+                </tr>
+                <% }); %>
+            </tbody>
+        </table>
+
+    <button onclick="location.href='/users'">Back to Profile</button>   
+
 </main>
 <%- include('../partials/footer') %>        
