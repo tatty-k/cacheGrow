@@ -30,16 +30,16 @@ main {
 }
 
 form {
-  font-size: 20px;
-  display: grid;
-  grid-template-columns: auto auto;
-  grid-gap: 1rem;
-  margin-bottom: 2rem;
+  margin: 0 50px;
 }
 
-form input[type="submit"]{
-  width: 10rem;
-  grid-column: 1 / 2;
+.col {
+  margin: 20px;
+  font-size: 20px;
+}
+
+.progress{
+  height: 200px;
 }
 
 #index-body {
