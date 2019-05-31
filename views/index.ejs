@@ -11,9 +11,9 @@
 <body id="index-body">
     <nav id="index-nav">
         <% if (user) { %>
-          <button onclick="location.href='/logout'" id="login-with-google">Log Out</button>
+          <button onclick="location.href='/logout'" class="login-with-google">Log Out</button>
         <% } else { %>
-          <button onclick="location.href='/auth/google'" id="login-with-google">Login with Google</button>
+          <button onclick="location.href='/auth/google'" class="login-with-google">Login with Google</button>
         <% } %>
     </nav>  
 

@@ -1,21 +1,19 @@
 <%- include('../partials/header') %>
 
 <main id="new-goal">
-    <form action="/users/<%= user.id %>/goals" method="POST">
+    <form id="add-new-goal" action="/users/<%= user.id %>/goals" method="POST">
         <div class="form-group form-row">   
             <div class="col">
                 <label>Savings Goal:</label>
                 <input type="text" name="goal" class="form-control">
             </div>
             <div class="col">  
-                <label>Why are you saving?:</label>
+                <label>Why are you saving?</label>
                 <input type="text" name="savingsPurpose" class="form-control">
             </div>
             <button type="submit" class="btn btn-success">Submit</button> 
         </div>
     </form>
-
-    <button onclick="location.href='/users'">Cancel</button>
 
 </main>
 

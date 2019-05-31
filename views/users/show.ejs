@@ -2,26 +2,28 @@
 
 <main id="user-profile">
     
-    <h1> Welcome <%= user.name%></h1>
+    <div id="welcome"> Welcome <%= user.name%></div>
 
-    <button onclick="location.href='goals/new'" id="new-goal-button">Add New Goal</button>
+    <div id="savings-goals">Current Savings Goals</div>
     
-    <table>
+    <table class="table">
         <thead>
             <tr>
-                <th></th>
-                <th>Cache Name</th>
-                <th>Progress</th>
-                <th></th>
-                <th></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
             <% user.goals.forEach(function(g) { %>
             <tr>
                 
-                <td> <%= g.savingsPurpose %> </td>
+                <td scope="row"> <strong><%= g.savingsPurpose %></strong></strong> </td>
                 <td> <%= g.percentToComplete %> % </td>
+                <td> $ <%= g.goal %> </td>
                 <td> <button onclick="location.href='/users/goals/<%= g._id %>/savings/new'">View Cache</button> </td>
                 <td>
                     <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
@@ -36,5 +38,8 @@
             <% }); %>
         </tbody>
     </table>
+
+<button onclick="location.href='goals/new'" id="new-goal-button">Add New Goal</button>
+
 
 <%- include('../partials/footer') %>

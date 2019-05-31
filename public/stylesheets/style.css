@@ -21,15 +21,15 @@ nav {
 button {
   background-color: #9ACC68;
   border-radius: 5px;
-  margin: 0 20px;
   border: white 5px;
+  padding: 5px;
 }
 
 main {
   grid-area: main;
 }
 
-form {
+#add-savings, #edit-goal, #add-new-goal {
   margin: 0 50px;
 }
 
@@ -39,21 +39,6 @@ table {
 
 td, th {
   text-align: center;
-}
-
-.col {
-  margin: 20px;
-  font-size: 15px;
-}
-
-.progress {
-  height: 200px;
-}
-
-#savings-timeline {
-  font-size: 30px;
-  text-align: center;
-  margin: 0 0 0 20;
 }
 
 #index-body {
@@ -72,34 +57,43 @@ td, th {
   "subtitle"
 }
 
+.login-with-google {
+  text-align: flex-end;
+}
+
+#welcome {
+  font-size: 50px;
+  text-align: center;
+}
+
+#savings-goals {
+  font-size: 30px;
+  text-align: center;
+  margin: 40px 0 0 0;
+}
+
 #index-body > h1 {
   font-size: 50px;
   background-color: transparent;
 }
 
-#user-profile {
-  display: grid;
-  grid-template-rows: 1fr 1fr 3fr;
-  grid-template-areas:
-  "title"
-  "new-goal-button"
-  "cache-table"
+.col {
+  margin: 20px;
+  font-size: 15px;
 }
 
-#user-profile > h1 {
-  grid-area: title;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
+#progress{
+  font-size: 50px;
+  text-align: center;
 }
 
-#user-profile > button {
-  grid-area: new-goal-button;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+#savings-timeline {
+  font-size: 30px;
+  text-align: center;
+  margin: 0 0 0 20;
 }
+
+
 
 #jar-o-money {
   background-image: url("/images/money-jar.png");

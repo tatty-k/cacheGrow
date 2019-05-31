@@ -2,9 +2,9 @@
 
 <main id="single-goal-view">
 
-    <div class="progress"> <%= goal.percentToComplete %> </div>
+    <div id="progress"> You have saved <%= goal.percentToComplete %>% of your $<%=goal.goal %> goal for <%=goal.savingsPurpose %>!  </div>
     
-    <form action="/users/goals/<%=goal._id%>/savings" method="POST"> 
+    <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
         <div class="form-group">   
             <div class="form-row">
                 <div class="col">
