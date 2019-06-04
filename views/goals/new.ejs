@@ -2,10 +2,10 @@
 
 <main id="new-goal">
     <form id="add-new-goal" action="/users/<%= user.id %>/goals" method="POST">
-        <div class="form-group form-row">   
+        <div class="form-row">   
             <div class="col">
                 <label>Savings Goal:</label>
-                <input type="text" name="goal" class="form-control">
+                <input type="number" name="goal" class="form-control" placeholder="$">
             </div>
             <div class="col">  
                 <label>Why are you saving?</label>

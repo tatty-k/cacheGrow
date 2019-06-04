@@ -16,7 +16,6 @@ function show(req, res){
         res.render('users/show', {
             name: req.query.name,
             user,
-            // percent
             //not storing in db?
             // email: req.query.email
         });
