@@ -76,15 +76,41 @@ td, th {
   font-size: 50px;
   background-color: transparent;
 }
+#add-savings{
+  margin: 40px auto 0px auto;
+}
 
-.col {
-  margin: 20px;
-  font-size: 15px;
+#progress_container{
+  position: relative;
 }
 
 #progress{
-  font-size: 50px;
+  font-size:35px;
   text-align: center;
+  position: absolute;
+  left: 48%;
+  margin-left: -28px;
+  top: 75%;
+}
+
+#range-container{
+  position: relative;
+}
+
+#range-start{
+  font-size:20px;
+  text-align: center;
+  position: absolute;
+  left: 20%;
+  margin-left: -28px;
+}
+
+#range-end{
+  font-size:20px;
+  text-align: center;
+  position: absolute;
+  left: 81%;
+  margin-left: -28px;
 }
 
 #savings-timeline {
@@ -92,8 +118,6 @@ td, th {
   text-align: center;
   margin: 0 0 0 20;
 }
-
-
 
 #jar-o-money {
   background-image: url("/images/money-jar.png");
@@ -112,3 +136,13 @@ img {
   color: #9ACC68;
   color: #E7FFCF;
 }
+
+@media only screen and (max-width: 715px){
+  #progress{
+    font-size:15px;
+    left: 54%;
+  }
+
+}
+
+

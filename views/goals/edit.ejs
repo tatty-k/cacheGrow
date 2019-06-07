@@ -6,11 +6,11 @@
         <div class="form-group form-row">   
             <div class="col">
                 <label>Savings Goal:</label>
-                <input type="number" name="goal" class="form-control" value="<%= goal.goal %>">
+                <input type="number" name="goal" class="form-control" value="<%= goal.goal %>" required>
             </div>
             <div class="col">    
-                <label>Why are you saving?:</label>
-                <input type="text" name="savingsPurpose" class="form-control" value="<%= goal.savingsPurpose%>">
+                <label>Why are you saving?</label>
+                <input type="text" name="savingsPurpose" class="form-control" value="<%= goal.savingsPurpose%>" required>
                 <input hidden type="text" name="id" value="<%= goal._id %>">
             </div>    
             <button type="submit" class="btn btn-success">Submit</button>

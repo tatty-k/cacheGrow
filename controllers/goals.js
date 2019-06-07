@@ -1,5 +1,5 @@
-let User = require('../models/user');
 let Goal = require('../models/goal');
+let Helpers = require('../helpers/helpers');
 
 module.exports = {
     new: newGoal,
@@ -46,13 +46,8 @@ function createSavings(req, res){
     
     Goal.findById(req.params.id, function(err, goal){
         goal.progress.push(req.body);
-        
-        // TODO: helper function would help here
-        const totalSavings = goal.progress.reduce(function(preVal, curVal){
-            return parseInt(preVal) + parseInt(curVal.savingAmount);
-        }, 0)
-        const percent = (totalSavings/parseInt(goal.goal))*100;
-        goal.percentToComplete = Math.floor(percent);
+
+        goal.percentToComplete = Helpers.getPercent(goal);
 
         goal.save(function(err){
             if (err) {
@@ -68,10 +63,14 @@ function createSavings(req, res){
 function edit(req, res){
     //do I need to define this varable and send it to the edit view? 
     Goal.findById(req.params.id, function(err, goal){
-        console.log(goal);
+
+
         res.render('goals/edit', {
             goal
         });
     });
 }
+
+
+
 

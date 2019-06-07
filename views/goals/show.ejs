@@ -2,18 +2,24 @@
 
 <main id="single-goal-view">
 
-    <div id="progress"> You have saved <%= goal.percentToComplete %>% of your $<%=goal.goal %> goal for <%=goal.savingsPurpose %>!  </div>
+    <div class="w-75 mx-auto" id="progress_container">
+        <canvas id="doughnut-chart" width="200" height="113"></canvas>
+        <div id="range-container">
+            <h4 id="range-start">$0</h4>
+            <h4 id="range-end">$<%=goal.goal %></h4>
+        </div>
+        <div id="progress"> <span id="percent"><%= goal.percentToComplete %>%</span></div>
+    </div>    
     
     <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
         <div class="form-group">   
             <div class="form-row">
-                <div class="col">
-                    <label>Amount Saved</label>
-                    <input type="number" name="savingAmount" class="form-control" placeholder="How much did you save?">
+                <div class="col-auto">
+                    <input type="number" name="savingAmount" class="form-control" placeholder="How much did you save?" required>
                 </div>
-                <div class="col">
-                    <label>Saving Strategy</label>
-                    <input type="text" name="savingStrategy" class="form-control" placeholder="What strategy did you use to save?"> 
+                <div class="col-auto">
+
+                    <input type="text" name="savingStrategy" class="form-control" placeholder="What strategy did you use to save?" required> 
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button> 
             </div>
@@ -38,6 +44,30 @@
                 <% }); %>
             </tbody>
         </table>
+
+
+<script>    
+new Chart(document.getElementById("doughnut-chart"), {
+    type: 'doughnut',
+    data: {
+      datasets: [{ 
+          backgroundColor: ["#8e5ea2", 'gray'],
+          data: [<%= goal.percentToComplete %>, <%= 100-goal.percentToComplete %>]
+        }]
+    },
+    options: {
+        rotation: 1 * Math.PI,
+        circumference: 1 * Math.PI,
+
+        title: {
+        display: true,
+        text: '<%=goal.savingsPurpose%>',
+        fontSize: 40
+      }
+    }
+});
+
+</script>
 
 </main>
 <%- include('../partials/footer') %>        

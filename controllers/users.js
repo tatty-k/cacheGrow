@@ -1,5 +1,6 @@
 let User = require('../models/user');
-let Goal = require('../models/goal')
+let Goal = require('../models/goal');
+let Helpers = require('../helpers/helpers');
 
 module.exports = {
     show,
@@ -28,13 +29,20 @@ function create(req, res){
 }
 
 function update(req, res){
-    console.log(req.body);
-    Goal.update({_id: req.body.id}, req.body)
-    .exec(function(err, goal){
-        if (err){
-            console.log(err);
-        } 
-        console.log(goal);
-        res.redirect('/users');
+    Goal.findByIdAndUpdate(
+        req.body.id, 
+        req.body, 
+        // tells the funciton to return the updated goal
+        { new: true },
+        function(err, goal) {
+            if (err){
+                console.log("err", err);
+            } 
+            goal.percentToComplete = Helpers.getPercent(goal);
+            console.log("goal1", goal);
+            goal.save(function(err){
+                console.log("goal2", goal);
+                res.redirect('/users');
+            });
     });       
 }
