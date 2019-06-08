@@ -1,13 +1,15 @@
-let Goal = require('../models/goal');
 let Helpers = require('../helpers/helpers');
+//destucturing 
+const { Goal, Saving } = require('../models/goal');
 
 module.exports = {
     new: newGoal,
     create,
-    delete: deleteGoal,
+    deleteGoal,
     show,
     createSavings,
-    edit
+    edit,
+    deleteSavings
 }
 
 function newGoal(req, res){
@@ -46,15 +48,15 @@ function createSavings(req, res){
     
     Goal.findById(req.params.id, function(err, goal){
         goal.progress.push(req.body);
-
+        console.log()
         goal.percentToComplete = Helpers.getPercent(goal);
 
         goal.save(function(err){
             if (err) {
                 console.log(err)
-                res.redirect(`/users/goals/${goal._id}/savings/new`);
+                res.redirect(`/users/goals/${goal._id}/savings/show`);
             }
-            res.redirect(`/users/goals/${goal._id}/savings/new`);
+            res.redirect(`/users/goals/${goal._id}/savings/show`);
         });
     });
     
@@ -72,5 +74,19 @@ function edit(req, res){
 }
 
 
+function deleteSavings(req, res){
+    //why dosen't this strategy work
+    // Saving.findByIdAndRemove(req.params.s_id, function(err){
+    //     console.log("delete", req.params.s_id);
+    //     res.redirect('/users/goals/${goal.g_id}/savings/show');
+    // });
 
 
+    Goal.findById(req.params.g_id, function(err, goal){
+        goal.progress.id(req.params.s_id).remove();
+        goal.percentToComplete = Helpers.getPercent(goal);
+        goal.save(function(err) {
+            res.redirect(`/users/goals/${goal._id}/savings/show`)
+        })        
+    })
+}

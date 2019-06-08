@@ -24,10 +24,10 @@
                 <td scope="row"> <strong><%= g.savingsPurpose %></strong></strong> </td>
                 <td> <%= g.percentToComplete %> % </td>
                 <td> $ <%= g.goal %> </td>
-                <td> <button onclick="location.href='/users/goals/<%= g._id %>/savings/new'">View Cache</button> </td>
+                <td> <button onclick="location.href='/users/goals/<%= g._id %>/savings/show'">View</button> </td>
                 <td>
                     <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Delete Cache</button>
+                            <button type="submit">Delete</button>
                     </form>
                 </td>
                 <td> <form action="/users/goals/<%= g.id%>/edit" method="GET">

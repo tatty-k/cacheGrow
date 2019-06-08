@@ -1,5 +1,5 @@
 let User = require('../models/user');
-let Goal = require('../models/goal');
+const { Goal } = require('../models/goal');
 let Helpers = require('../helpers/helpers');
 
 module.exports = {
@@ -30,6 +30,7 @@ function create(req, res){
 
 function update(req, res){
     Goal.findByIdAndUpdate(
+        //
         req.body.id, 
         req.body, 
         // tells the funciton to return the updated goal

@@ -1,45 +1,44 @@
 <%- include('../partials/header') %>
 
-<main id="single-goal-view">
+<main class="container" id="single-goal-view">
 
-    <div class="w-75 mx-auto" id="progress_container">
-        <canvas id="doughnut-chart" width="200" height="113"></canvas>
+    <div class= "mx-auto" id="progress-container">
+        <canvas id="doughnut-chart" width="400" height="225"></canvas>
+        <div id="progress"> <span id="percent"><%= goal.percentToComplete %>%</span></div>
         <div id="range-container">
             <h4 id="range-start">$0</h4>
             <h4 id="range-end">$<%=goal.goal %></h4>
         </div>
-        <div id="progress"> <span id="percent"><%= goal.percentToComplete %>%</span></div>
     </div>    
     
+    <div>
     <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
-        <div class="form-group">   
-            <div class="form-row">
-                <div class="col-auto">
-                    <input type="number" name="savingAmount" class="form-control" placeholder="How much did you save?" required>
+        <div class="form-group form-row">   
+                <div class="col">
+                    <input type="number" step="0.01"name="savingAmount" class="form-control" placeholder="Amount saved" required>
                 </div>
-                <div class="col-auto">
-
-                    <input type="text" name="savingStrategy" class="form-control" placeholder="What strategy did you use to save?" required> 
+                <div class="col">
+                    <input type="text" name="savingStrategy" class="form-control" placeholder="Strategy used to save" required> 
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button> 
-            </div>
         </div>
     </form>
+    </div>  
 
-    <div id="savings-timeline">Savings Timeline</div>
+    <div class= "mx-auto" id="savings-timeline">Savings Timeline</div>
     
     <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Saving Amount</th>
-                    <th scope="col">Saving Strategy</th>
-                </tr>
-            </thead>
+   
             <tbody>
                 <% goal.progress.forEach(function(s) { %>
                 <tr>
                     <td scope="row"> $ <%= s.savingAmount %> </td>
                     <td> <%= s.savingStrategy %> </td>
+                    <td>  
+                        <form action="/users/goals/<%=goal._id%>/savings/<%=s._id%>?_method=DELETE" method="POST">
+                                <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 <% }); %>
             </tbody>
@@ -58,6 +57,9 @@ new Chart(document.getElementById("doughnut-chart"), {
     options: {
         rotation: 1 * Math.PI,
         circumference: 1 * Math.PI,
+        tooltips: {
+            enabled: false
+            },
 
         title: {
         display: true,

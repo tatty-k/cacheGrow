@@ -43,5 +43,8 @@ goalSchema.methods.findPercentComplete = function(user) {
     return 0
 }
 
-module.exports = mongoose.model('Goal', goalSchema);
+module.exports = {
+    Goal: mongoose.model('Goal', goalSchema),
+    Saving: mongoose.model('Saving', savingsSchema)
+};
     
