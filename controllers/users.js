@@ -24,7 +24,6 @@ function show(req, res){
 }
 
 function create(req, res){
-    //push into goal??
     Goal.progress.push(req.body)
 }
 

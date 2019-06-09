@@ -1,45 +1,67 @@
 <%- include('../partials/header') %>
 
-<main id="user-profile">
+<main class="container" id="user-profile">
     
-    <div id="welcome"> Welcome <%= user.name%></div>
-
-    <div id="savings-goals">Current Savings Goals</div>
+    <% if (user.goals.length === 0){ %>
+    <div id="welcome"> Welcome <%= user.name%>! You do not have any savings goals. Click the New Goal button to get started. </div>
+    <% } %>
     
-    <table class="table">
-        <thead>
-            <tr>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-        </thead>
-        <tbody>
-            <% user.goals.forEach(function(g) { %>
-            <tr>
-                
-                <td scope="row"> <strong><%= g.savingsPurpose %></strong></strong> </td>
-                <td> <%= g.percentToComplete %> % </td>
-                <td> $ <%= g.goal %> </td>
-                <td> <button onclick="location.href='/users/goals/<%= g._id %>/savings/show'">View</button> </td>
-                <td>
+    <section>
+        <% user.goals.forEach(function(g) { %>
+        <div id="goal-visual-container">
+            <div class= "mx-auto" id="progress-container">
+                <div><canvas id="doughnut-chart" width="400" height="225"></canvas></div>
+                <div id="progress"><%= g.percentToComplete %>%</div>
+                <div id="range-container">
+                    <h4 id="range-start">$0</h4>
+                    <h4 id="range-end">$<%=g.goal %></h4>
+                </div>
+            </div>
+            <div class= "mx-auto" id="button-container">
+                <div><button onclick="location.href='/users/goals/<%= g._id %>/savings/show'" class="btn btn-info">View</button> </div>
+                <div>
+                    <form action="/users/goals/<%= g.id%>/edit" method="GET">
+                        <button type="submit" class="btn btn-secondary">Edit</button>
+                    </form>
+                </div>
+                <div>
                     <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
-                            <button type="submit">Delete</button>
+                        <button type="submit" class="btn btn-warning">Delete</button>
                     </form>
-                </td>
-                <td> <form action="/users/goals/<%= g.id%>/edit" method="GET">
-                        <button type="submit">Edit</button>
-                    </form>
-                </td>
-            </tr>
-            <% }); %>
-        </tbody>
-    </table>
+                </div>
+            </div>
+        </div>
 
-<button onclick="location.href='goals/new'" id="new-goal-button">Add New Goal</button>
+        <script>    
+                new Chart(document.getElementById("doughnut-chart"), {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{ 
+                            backgroundColor: ["#8e5ea2", '#EDEBEC'],
+                            data: [<%= g.percentToComplete %>, <%= 100-g.percentToComplete %>]
+                        }]
+                    },
+                    options: {
+                        rotation: 1 * Math.PI,
+                        circumference: 1 * Math.PI,
+                        tooltips: {
+                            enabled: false
+                            },
+            
+                        title: {
+                        display: true,
+                        text: '<%=g.savingsPurpose%>',
+                        fontSize: 40,
+                        fontColor: 'black'
+                        }
+                    }
+                });
+                    
+            </script>
+        <% }); %>
+    </section>
+
+
 
 
 <%- include('../partials/footer') %>

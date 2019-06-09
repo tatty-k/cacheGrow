@@ -11,13 +11,15 @@
 <body id="index-body">
     <nav id="index-nav">
         <% if (user) { %>
-          <button onclick="location.href='/logout'" class="login-with-google">Log Out</button>
+          <button onclick="location.href='/logout'" id="login-with-google" class="btn btn-outline-dark">Log Out</button>
         <% } else { %>
-          <button onclick="location.href='/auth/google'" class="login-with-google">Login with Google</button>
+          <button onclick="location.href='/auth/google'" id="login-with-google" class="btn btn-outline-dark">Login with Google</button>
         <% } %>
     </nav>  
 
-    <h1>cacheGrow</h1>
-
+    <main>
+        <h1 id="cacheGrow">cacheGrow</h1>
+        <h2 id="description">A financial tool that encourages less spending and more good times</h2>
+    </main>
   </body>
   </html>

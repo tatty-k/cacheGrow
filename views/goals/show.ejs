@@ -4,31 +4,32 @@
 
     <div class= "mx-auto" id="progress-container">
         <canvas id="doughnut-chart" width="400" height="225"></canvas>
-        <div id="progress"> <span id="percent"><%= goal.percentToComplete %>%</span></div>
+        <div id="progress"><%= goal.percentToComplete %>%</div>
         <div id="range-container">
-            <h4 id="range-start">$0</h4>
-            <h4 id="range-end">$<%=goal.goal %></h4>
+            <div id="range-start">$0</div>
+            <div id="range-end">$<%=goal.goal%></div>
         </div>
     </div>    
     
-    <div>
-    <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
+
+    <form class= "mx-auto" id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
         <div class="form-group form-row">   
                 <div class="col">
-                    <input type="number" step="0.01"name="savingAmount" class="form-control" placeholder="Amount saved" required>
+                    <input type="number" step="0.01" name="savingAmount" class="form-control" placeholder="Amount saved" required>
                 </div>
                 <div class="col">
                     <input type="text" name="savingStrategy" class="form-control" placeholder="Strategy used to save" required> 
                 </div>
                 <button type="submit" class="btn btn-success">Submit</button> 
         </div>
-    </form>
-    </div>  
+    </form> 
 
-    <div class= "mx-auto" id="savings-timeline">Savings Timeline</div>
-    
-    <table class="table">
-   
+    <% if (goal.progress.length === 0){ %>
+    <div class="table-title" id="savings-timeline">You have not entered any savings for this goal. Use the form above to get started</div>
+    <% } %>
+
+    <table class="table mx-auto">
+
             <tbody>
                 <% goal.progress.forEach(function(s) { %>
                 <tr>
@@ -45,12 +46,13 @@
         </table>
 
 
+
 <script>    
 new Chart(document.getElementById("doughnut-chart"), {
     type: 'doughnut',
     data: {
       datasets: [{ 
-          backgroundColor: ["#8e5ea2", 'gray'],
+          backgroundColor: ["#8e5ea2", '#EDEBEC'],
           data: [<%= goal.percentToComplete %>, <%= 100-goal.percentToComplete %>]
         }]
     },
