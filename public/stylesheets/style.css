@@ -1,7 +1,6 @@
 body {
   margin: 0;
   height: 100vh;
-  width: 100vw;
   background-color: white;
   display: grid;
   grid-template-rows: 80px auto;
@@ -95,7 +94,7 @@ button {
 #progress-container{
   display: grid;
   position: relative;
-  width: 100%
+
 }
 
 #progress{
@@ -153,6 +152,16 @@ button {
   color: #E7FFCF;
 }
 
+/* @media only screen and (min-width: 320px){
+  
+  body {
+    width: 100%;
+    overflow: hidden;
+  }
+
+
+}
+
 @media only screen and (min-width: 720px){
   
   #progress-container{
@@ -184,5 +193,5 @@ button {
   }
 
 }
-
+ */
 

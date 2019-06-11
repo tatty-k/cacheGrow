@@ -7,10 +7,10 @@
     <% } %>
     
     <section>
-        <% user.goals.forEach(function(g) { %>
-        <div id="goal-visual-container">
+        <% user.goals.forEach(function(g, idx) { %>
+        <div id="goal-visual-container-<%=idx %>">
             <div class= "mx-auto" id="progress-container">
-                <div><canvas id="doughnut-chart" width="400" height="225"></canvas></div>
+                <canvas id="doughnut-chart-<%=idx %>" width="400" height="225"></canvas>
                 <div id="progress"><%= g.percentToComplete %>%</div>
                 <div id="range-container">
                     <h4 id="range-start">$0</h4>
@@ -33,7 +33,7 @@
         </div>
 
         <script>    
-                new Chart(document.getElementById("doughnut-chart"), {
+                new Chart(document.getElementById("doughnut-chart-<%=idx %>"), {
                     type: 'doughnut',
                     data: {
                         datasets: [{ 
@@ -47,13 +47,16 @@
                         tooltips: {
                             enabled: false
                             },
-            
                         title: {
-                        display: true,
-                        text: '<%=g.savingsPurpose%>',
-                        fontSize: 40,
-                        fontColor: 'black'
-                        }
+                            display: true,
+                            text: '<%=g.savingsPurpose%>',
+                            fontSize: 40,
+                            fontColor: 'black'
+                            },
+                        responsive:true,   
+                        onResize: function (){
+                            console.log('resize success');
+                        }  
                     }
                 });
                     
