@@ -37,7 +37,7 @@
                     <td> <%= s.savingStrategy %> </td>
                     <td>  
                         <form action="/users/goals/<%=goal._id%>/savings/<%=s._id%>?_method=DELETE" method="POST">
-                                <button type="submit">Delete</button>
+                            <button type="submit">Delete</button>
                         </form>
                     </td>
                 </tr>
@@ -66,7 +66,8 @@ new Chart(document.getElementById("doughnut-chart"), {
         title: {
         display: true,
         text: '<%=goal.savingsPurpose%>',
-        fontSize: 40
+        fontSize: 40,
+        fontColor: 'black'
       }
     }
 });
