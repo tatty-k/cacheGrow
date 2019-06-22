@@ -15,7 +15,6 @@ module.exports = {
 function newGoal(req, res){
     res.render('goals/new', {
         user: req.user,
-        // email: req.user.email,
     });
 }
 
