@@ -9,7 +9,7 @@
     <section>
         <% user.goals.forEach(function(g, idx) { %>
         <div class="card mx-auto" id="goal-visual-container-<%=idx %>">
-            <div  id="progress-container">
+            <div class="row" id="progress-container">
                 <canvas class="card-img-top" id="doughnut-chart-<%=idx %>"></canvas>
                 <div id="progress"><%= g.percentToComplete %>%</div>
                 <div id="range-container">

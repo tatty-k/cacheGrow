@@ -95,9 +95,7 @@ button {
 }
 
 #progress-container{
-  display: grid;
   position: relative;
-
 }
 
 #progress{
@@ -121,7 +119,6 @@ button {
   display: flex;
   justify-content: space-evenly;
   text-align: center;
-  width: 500px;
 }
 
 #user-profile .card {
