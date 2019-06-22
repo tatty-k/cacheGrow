@@ -8,16 +8,16 @@
     
     <section>
         <% user.goals.forEach(function(g, idx) { %>
-        <div id="goal-visual-container-<%=idx %>">
-            <div class= "mx-auto" id="progress-container">
-                <canvas id="doughnut-chart-<%=idx %>" width="400" height="225"></canvas>
+        <div class="card mx-auto" id="goal-visual-container-<%=idx %>">
+            <div  id="progress-container">
+                <canvas class="card-img-top" id="doughnut-chart-<%=idx %>"></canvas>
                 <div id="progress"><%= g.percentToComplete %>%</div>
                 <div id="range-container">
                     <h4 id="range-start">$0</h4>
                     <h4 id="range-end">$<%=g.goal %></h4>
                 </div>
             </div>
-            <div class= "mx-auto" id="button-container">
+            <div class= "card-title mx-auto" id="button-container">
                 <div><button onclick="location.href='/users/goals/<%= g._id %>/savings/show'" class="btn btn-info">View</button> </div>
                 <div>
                     <form action="/users/goals/<%= g.id%>/edit" method="GET">
@@ -53,7 +53,9 @@
                             fontSize: 40,
                             fontColor: 'black'
                             },
+                        responsive: true,
                     }
+                    
                 });
                     
             </script>
