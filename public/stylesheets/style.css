@@ -1,7 +1,7 @@
 body {
   margin: 1 rem;
   height: 100vh;
-  background-color: white;
+  background-color: #F8F9FA;
   display: grid;
   grid-template-rows: 80px auto;
   grid-template-areas: 
@@ -10,12 +10,7 @@ body {
 }
 
 nav {
-  background-color: #EDEBEC;
   grid-area: nav;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 20px;
 }
 
 main {
@@ -23,6 +18,7 @@ main {
   align-items: center;
   justify-content: center;
   text-align: center;
+  margin: 1.5rem;
 }
 
 table {
@@ -38,10 +34,6 @@ button {
   border-radius: 5px;
   border: 5px;
   padding: 5px;
-}
-
-.card {
-  margin: 3rem;
 }
 
 /* Landing page */
@@ -83,53 +75,61 @@ button {
 }
 
 /* User profile page */
-#welcome {
-  font-size: 50px;
-  text-align: center;
+
+.goal-container {
+  display: grid;
 }
 
-#savings-goals {
-  text-align: center;
-  margin: 40px;
+.goal-column-container {
+  column-count: 1;
 }
 
-#goal-visual-container {
-  margin: 3rem 0 0 0;
+#user-profile  #welcome {
+  font-size: 2rem;
+  justify-content: center;
+}
+
+#user-profile .card {
+  margin-bottom: 1.5rem;
+  align-items: center;
+  justify-content: center; 
+}
+
+#goal_title{
+  font-size: 1.9rem;
+  margin: 0 auto;
 }
 
 #progress-container{
   position: relative;
+  width: 80%;
 }
-#goal_title{
-  font-size: 1.3rem;
-  margin: 0 auto;
-}
+
 #progress{
-  font-size: 1.8rem;
+  font-size: 3rem;
   text-align: center;
   position: absolute;
-  left: 48%;
+  left: 47%;
   margin-left: -13px;
-  top: 70%;
+  top: 63%;
 }
 
 #range-container{
   display: flex;
   justify-content: space-between; 
-  text-align: center;
-  font-size: 1.7rem;
-  padding: 5px 75px;
+  padding: 5px 55px;
+  font-size: 1.5rem;
 }
 
 #button-container{
   display: flex;
   justify-content: space-evenly;
   text-align: center;
+  margin-bottom: 1rem; 
 }
 
-#user-profile .card {
-  align-items: center;
-  justify-content: center; 
+#user-profile button {
+  margin: 0 1.1rem;
 }
 
 /* individual savings view page*/
@@ -168,21 +168,33 @@ button {
 .btn-success{
   margin: 1.5rem 4rem;
 }
- 
-@media only screen and (min-width: 320px){
-  
-  body {
-    width: 100%;
+
+@media only screen and (max-width: 460px){
+  #goal_title {
+    font-size: 1.5rem;
   }
 
+  #range-container{
+    padding: 3px 20px;
+    font-size: 1rem;
+  }
 
-} 
+  #progress{
+    font-size: 1.7rem;
+    left: 48%;
+  }
+
+  #user-profile button {
+    padding: 0.05rem 0.4rem;
+    margin: 0 0.3rem;
+  }
+
+  #button-container{
+    margin: 0.5rem 0; 
+  }
+}
 
 @media only screen and (min-width: 720px){
-  
-  #progress-container{
-    width: 85%
-  }
 
   #cacheGrow {
     margin: 2rem 0 0 5rem;
@@ -196,19 +208,18 @@ button {
 }
 
 @media only screen and (min-width: 992px){
-  form {
+  /* form {
     width: 70%;
   }
   table{
     width: 70%;
+  } */
+
+  .goal-column-container {
+    column-count: 2;
   }
 
-
-  #progress-container{
-    width: 50%
-  }
-
-}
+} 
 
 #unassigned{
   color: #608041;

@@ -6,25 +6,26 @@
     <div id="welcome"> Welcome <%= user.name%>! You do not have any savings goals. Click the New Goal button to get started. </div>
     <% } %>
     
-    <section>
+    <div class="goal-container">
+        <div class="goal-column-container">
         <% user.goals.forEach(function(g, idx) { %>
-        <div class="card  mx-auto" id="goal-visual-container-<%=idx %>">
-            <div class="col" id="progress-container">
-                <div class="row" id="goal_title"><%=g.savingsPurpose%></div>
-                <canvas class="row" id="doughnut-chart-<%=idx %>"></canvas>
+        <div class="card" id="goal-visual-container-<%=idx %>">
+            <div id="progress-container">
+                <div id="goal_title"><%=g.savingsPurpose%></div>
+                <canvas id="doughnut-chart-<%=idx %>"></canvas>
                 <div id="progress"><%= g.percentToComplete %>%</div>
-                <div class="row" id="range-container">
-                    <h4 id="range-start">$0</h4>
-                    <h4 id="range-end">$<%=g.goal %></h4>
+                <div id="range-container">
+                    <div id="range-start">$0</div>
+                    <div id="range-end">$<%=g.goal %></div>
                 </div>
             </div>
-            <div class="row mx-auto" id="button-container">
-                <div><button onclick="location.href='/users/goals/<%= g._id %>/savings/show'" class="btn btn-info">View</button> </div>
+            <div id="button-container">
                 <div>
                     <form action="/users/goals/<%= g.id%>/edit" method="GET">
                         <button type="submit" class="btn btn-secondary">Edit</button>
                     </form>
                 </div>
+                <button onclick="location.href='/users/goals/<%= g._id %>/savings/show'" class="btn btn-info">Add Savings</button> 
                 <div>
                     <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-warning">Delete</button>
@@ -38,7 +39,7 @@
                     type: 'doughnut',
                     data: {
                         datasets: [{ 
-                            backgroundColor: ["#8e5ea2", '#EDEBEC'],
+                            backgroundColor: ["#8e5ea2", "#EDEBEC"],
                             data: [<%= g.percentToComplete %>, <%= 100-g.percentToComplete %>]
                         }]
                     },
@@ -61,7 +62,8 @@
                     
             </script>
         <% }); %>
-    </section>
+        </div>
+    </div>
 
 
 
