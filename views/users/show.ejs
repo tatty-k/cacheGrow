@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<main class="container" id="user-profile">
+<main id="user-profile">
     
     <% if (user.goals.length === 0){ %>
     <div id="welcome"> Welcome <%= user.name%>! You do not have any savings goals. Click the New Goal button to get started. </div>
@@ -8,16 +8,17 @@
     
     <section>
         <% user.goals.forEach(function(g, idx) { %>
-        <div class="card mx-auto" id="goal-visual-container-<%=idx %>">
-            <div class="row" id="progress-container">
-                <canvas class="card-img-top" id="doughnut-chart-<%=idx %>"></canvas>
+        <div class="card  mx-auto" id="goal-visual-container-<%=idx %>">
+            <div class="col" id="progress-container">
+                <div class="row" id="goal_title"><%=g.savingsPurpose%></div>
+                <canvas class="row" id="doughnut-chart-<%=idx %>"></canvas>
                 <div id="progress"><%= g.percentToComplete %>%</div>
-                <div id="range-container">
+                <div class="row" id="range-container">
                     <h4 id="range-start">$0</h4>
                     <h4 id="range-end">$<%=g.goal %></h4>
                 </div>
             </div>
-            <div class= "card-title mx-auto" id="button-container">
+            <div class="row mx-auto" id="button-container">
                 <div><button onclick="location.href='/users/goals/<%= g._id %>/savings/show'" class="btn btn-info">View</button> </div>
                 <div>
                     <form action="/users/goals/<%= g.id%>/edit" method="GET">
@@ -48,9 +49,9 @@
                             enabled: false
                             },
                         title: {
-                            display: true,
+                            display: false,
                             text: '<%=g.savingsPurpose%>',
-                            fontSize: 40,
+                            fontSize: 20,
                             fontColor: 'black'
                             },
                         responsive: true,

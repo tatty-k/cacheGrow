@@ -47,7 +47,6 @@ function createSavings(req, res){
     
     Goal.findById(req.params.id, function(err, goal){
         goal.progress.push(req.body);
-        console.log()
         goal.percentToComplete = Helpers.getPercent(goal);
 
         goal.save(function(err){
