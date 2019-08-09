@@ -134,6 +134,27 @@ button {
 }
 
 /* individual savings view page*/
+#single-goal-view{
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+#add-savings {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0;
+}
+
+#single-goal-view .input {
+  margin-right: 1rem;
+}
+
+#single-goal-view #progress-container{
+  padding: 0 3rem;
+}
+
+
 #savings-timeline {
   text-align: center;
 }
@@ -142,9 +163,7 @@ button {
   font-size: 1.9rem;
 }
 
-#add-savings {
-  margin: 20px 0;
-}
+
 
 /* edit and create goal forms */
 .header-footer{
@@ -166,7 +185,7 @@ button {
   margin-bottom: 1.2rem;
 }
 
-.btn-success{
+.form .btn-success{
   margin: 1.5rem 4rem;
 }
 

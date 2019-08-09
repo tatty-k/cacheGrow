@@ -1,8 +1,9 @@
 <%- include('../partials/header') %>
 
-<main class="container" id="single-goal-view">
+<main id="single-goal-view">
 
-    <div class= "mx-auto" id="progress-container">
+    <div class="card" id="progress-container">
+        <div id="goal_title"><%=goal.savingsPurpose%></div>
         <canvas id="doughnut-chart" width="400" height="225"></canvas>
         <div id="progress"><%= goal.percentToComplete %>%</div>
         <div id="range-container">
@@ -12,16 +13,10 @@
     </div>    
     
 
-    <form class= "mx-auto" id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
-        <div class="form-group form-row">   
-                <div class="col">
-                    <input type="number" step="0.01" name="savingAmount" class="form-control" placeholder="Amount saved" required>
-                </div>
-                <div class="col">
-                    <input type="text" name="savingStrategy" class="form-control" placeholder="Strategy used to save" required> 
-                </div>
-                <button type="submit" class="btn btn-success">Submit</button> 
-        </div>
+    <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
+            <input class="input form-control" type="number" step="0.01" name="savingAmount" placeholder="Amount saved" required>
+            <input class="input form-control" type="text" name="savingStrategy" class="form-control" placeholder="Strategy used to save" required> 
+        <button type="submit" class="btn btn-success">Submit</button> 
     </form> 
 
     <% if (goal.progress.length === 0){ %>
@@ -47,32 +42,33 @@
 
 
 
-<script>    
-new Chart(document.getElementById("doughnut-chart"), {
-    type: 'doughnut',
-    data: {
-      datasets: [{ 
-          backgroundColor: ["#8e5ea2", '#EDEBEC'],
-          data: [<%= goal.percentToComplete %>, <%= 100-goal.percentToComplete %>]
-        }]
-    },
-    options: {
-        rotation: 1 * Math.PI,
-        circumference: 1 * Math.PI,
-        tooltips: {
-            enabled: false
-            },
-
-        title: {
-        display: true,
-        text: '<%=goal.savingsPurpose%>',
-        fontSize: 40,
-        fontColor: 'black'
-      }
-    }
-});
-
-</script>
+        <script>    
+                new Chart(document.getElementById("doughnut-chart"), {
+                    type: 'doughnut',
+                    data: {
+                        datasets: [{ 
+                            backgroundColor: ["#8e5ea2", "#EDEBEC"],
+                            data: [<%= goal.percentToComplete %>, <%= 100-goal.percentToComplete %>]
+                        }]
+                    },
+                    options: {
+                        rotation: 1 * Math.PI,
+                        circumference: 1 * Math.PI,
+                        tooltips: {
+                            enabled: false
+                            },
+                        title: {
+                            display: false,
+                            text: '<%=goal.savingsPurpose%>',
+                            fontSize: 20,
+                            fontColor: 'black'
+                            },
+                        responsive: true,
+                    }
+                    
+                });
+                    
+            </script>
 
 </main>
 <%- include('../partials/footer') %>        
