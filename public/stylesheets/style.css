@@ -87,6 +87,7 @@ button {
 #user-profile  #welcome {
   font-size: 2rem;
   justify-content: center;
+  margin-bottom: 1.5rem; 
 }
 
 #user-profile .card {
@@ -96,7 +97,7 @@ button {
 }
 
 #goal_title{
-  font-size: 1.9rem;
+  font-size: 1.5rem;
   margin: 0 auto;
 }
 

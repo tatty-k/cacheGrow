@@ -4,6 +4,8 @@
     
     <% if (user.goals.length === 0){ %>
     <div id="welcome"> Welcome <%= user.name%>! You do not have any savings goals. Click the New Goal button to get started. </div>
+    <% } else { %>
+    <div id="welcome"> Welcome <%= user.name%>!</div>
     <% } %>
     
     <div class="goal-container">
