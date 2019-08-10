@@ -27,10 +27,10 @@
                         <button type="submit" class="btn btn-secondary">Edit</button>
                     </form>
                 </div>
-                <button onclick="location.href='/users/goals/<%= g._id %>/savings/show'" class="btn btn-info">Add Savings</button> 
+                <button class="btn btn-info" onclick="location.href='/users/goals/<%= g._id %>/savings/show'">Add Savings</button> 
                 <div>
                     <form action="/users/goals/<%= g._id %>?_method=DELETE" method="POST">
-                        <button type="submit" class="btn btn-warning">Delete</button>
+                        <button class="btn btn-warning" type="submit">Delete</button>
                     </form>
                 </div>
             </div>

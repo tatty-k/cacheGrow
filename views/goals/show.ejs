@@ -2,45 +2,51 @@
 
 <main id="single-goal-view">
 
-    <div class="card" id="progress-container">
-        <div id="goal_title"><%=goal.savingsPurpose%></div>
-        <canvas id="doughnut-chart" width="400" height="225"></canvas>
-        <div id="progress"><%= goal.percentToComplete %>%</div>
-        <div id="range-container">
-            <div id="range-start">$0</div>
-            <div id="range-end">$<%=goal.goal%></div>
-        </div>
-    </div>    
-    
+    <div class="goal-container">
+        <div class="goal-column-container">
 
-    <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
-            <input class="input form-control" type="number" step="0.01" name="savingAmount" placeholder="Amount saved" required>
-            <input class="input form-control" type="text" name="savingStrategy" class="form-control" placeholder="Strategy used to save" required> 
-        <button type="submit" class="btn btn-success">Submit</button> 
-    </form> 
+            <div class="card"> 
+                <div id="progress-container">
+                    <div id="goal_title"><%=goal.savingsPurpose%></div>
+                    <canvas id="doughnut-chart" width="400" height="225"></canvas>
+                    <div id="progress"><%= goal.percentToComplete %>%</div>
+                    <div id="range-container">
+                        <div id="range-start">$0</div>
+                        <div id="range-end">$<%=goal.goal%></div>
+                    </div>
+                </div>
+            </div>    
 
-    <% if (goal.progress.length === 0){ %>
-    <div class="table-title" id="savings-timeline">You have not entered any savings for this goal. Use the form above to get started</div>
-    <% } %>
+            <form id="add-savings" action="/users/goals/<%=goal._id%>/savings" method="POST"> 
+                <input class="input form-control" type="number" step="0.01" name="savingAmount" placeholder="Amount saved" required>
+                <input class="input form-control" type="text" name="savingStrategy" placeholder="Strategy used to save" required> 
+                <button class="btn btn-success" type="submit" >Submit</button> 
+            </form> 
 
-    <table class="table mx-auto">
 
-            <tbody>
+            <div class="savings-table-container">
+
+                <% if (goal.progress.length === 0){ %>
+                <div class="savings-timeline">You have not entered any savings for this goal. Use the form above to get started.</div>
+                <% } else { %>
+                <div class="savings-timeline">Track Your Savings</div>
+                <% } %>
+
                 <% goal.progress.forEach(function(s) { %>
-                <tr>
-                    <td scope="row"> $ <%= s.savingAmount %> </td>
-                    <td> <%= s.savingStrategy %> </td>
-                    <td>  
-                        <form action="/users/goals/<%=goal._id%>/savings/<%=s._id%>?_method=DELETE" method="POST">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td>
-                </tr>
+                <div id="savings-row">
+                    <div> $ <%= s.savingAmount %> </div>
+                    <div> <%= s.savingStrategy %> </div>
+
+                    <form action="/users/goals/<%=goal._id%>/savings/<%=s._id%>?_method=DELETE" method="POST">
+                        <button class="btn btn-warning" type="submit">Delete</button>
+                    </form>
+
+                </div>
                 <% }); %>
-            </tbody>
-        </table>
+            </div>
 
-
+        </div>    
+    </div> 
 
         <script>    
                 new Chart(document.getElementById("doughnut-chart"), {
