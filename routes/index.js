@@ -12,7 +12,6 @@ router.get('/', (req, res)=>{
 /* GET inidiviual users page*/
 router.get('/auth/google', passport.authenticate(
     'google',
-    //without line below, authentication dosen't work. why?
     { scope: ['profile', 'email']}
 ));
 
