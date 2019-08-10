@@ -7,9 +7,8 @@
     <% } else { %>
     <div id="welcome"> Welcome <%= user.name%>!</div>
     <% } %>
-    
-    <div class="goal-container">
-        <div class="goal-column-container">
+    <div class="outer-goal-container">
+        <div class="goal-container">
         <% user.goals.forEach(function(g, idx) { %>
         <div class="card" id="goal-visual-container-<%=idx %>">
             <div id="progress-container">
@@ -34,8 +33,7 @@
                     </form>
                 </div>
             </div>
-        </div>
-
+        </div>    
         <script>    
                 new Chart(document.getElementById("doughnut-chart-<%=idx %>"), {
                     type: 'doughnut',

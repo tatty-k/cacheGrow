@@ -2,14 +2,16 @@
 
 <main id="single-goal-view">
 
-    <div class="goal-container">
-        <div class="goal-column-container">
+        <div class="goal-container">
 
             <div class="card"> 
                 <div id="progress-container">
                     <div id="goal_title"><%=goal.savingsPurpose%></div>
                     <canvas id="doughnut-chart" width="400" height="225"></canvas>
-                    <div id="progress"><%= goal.percentToComplete %>%</div>
+                    <% if (goal.percentToComplete < 10) {%>
+                    <% } else { %>
+                        <div id="progress"><%= goal.percentToComplete %>%</div>
+                    <% } %>
                     <div id="range-container">
                         <div id="range-start">$0</div>
                         <div id="range-end">$<%=goal.goal%></div>
@@ -38,7 +40,7 @@
                     <div> <%= s.savingStrategy %> </div>
 
                     <form action="/users/goals/<%=goal._id%>/savings/<%=s._id%>?_method=DELETE" method="POST">
-                        <button class="btn btn-warning" type="submit">Delete</button>
+                        <button class="btn btn-warning" type="submit">x</button>
                     </form>
 
                 </div>
@@ -46,7 +48,7 @@
             </div>
 
         </div>    
-    </div> 
+
 
         <script>    
                 new Chart(document.getElementById("doughnut-chart"), {

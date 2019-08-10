@@ -2,23 +2,18 @@ body {
   margin: 1 rem;
   height: 100vh;
   background-color: #F8F9FA;
-  display: grid;
-  grid-template-rows: 80px auto;
-  grid-template-areas: 
-    "nav"
-    "main";
+  text-align: center;
 }
 
 nav {
-  grid-area: nav;
+  background-color: #F8F9FA; 
+  margin: .7rem .7rem 0 .7rem;
 }
 
 main {
-  grid-area: main;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  margin: 1.5rem;
+  margin: 1rem 1.5rem 1.5rem 1.5rem;
 }
 
 /* Landing page */
@@ -42,26 +37,20 @@ main {
 #index-body > nav {
   display: flex;
   justify-content: flex-end;
+  background-color: rgba(0,0,0,0);
 }
 
 #cacheGrow {
   font-size: 3.5rem;
-  text-align: center;
 }
 
 #description {
   font-size: 1.5rem;
-  text-align: center;
 }
 
 /* User profile page */
-
-.goal-container {
+#user-profile .goal-container{
   display: grid;
-}
-
-.goal-column-container {
-  column-count: 1;
 }
 
 #user-profile  #welcome {
@@ -87,12 +76,11 @@ main {
 }
 
 #progress{
-  font-size: 3rem;
-  text-align: center;
+  font-size: 2.5rem;
   position: absolute;
-  left: 47%;
+  left: 46%;
   margin-left: -13px;
-  top: 63%;
+  top: 68%;
 }
 
 #range-container{
@@ -105,11 +93,10 @@ main {
 #button-container{
   display: flex;
   justify-content: space-evenly;
-  text-align: center;
   margin-bottom: 1rem; 
 }
 
-#user-profile button #single-goal-view button {
+#user-profile button {
   margin: 0 1.1rem;
 }
 
@@ -138,12 +125,15 @@ main {
 #savings-row{
   display: flex;
   justify-content: space-around; 
-  margin: .5rem;
+  margin: .7rem;
 }
 
 .savings-timeline {
-  text-align: center;
   font-size: 1.5rem;
+}
+
+#single-goal-view .btn-warning{
+  padding: 0 0.4rem;
 }
 
 /* edit and create goal forms */
@@ -174,6 +164,10 @@ main {
   #login-with-google {
     margin: 1.2rem;
   }
+
+  .header-footer{
+    font-size: 1.5rem;
+  }
   
   #goal_title {
     font-size: 1.5rem;
@@ -185,7 +179,7 @@ main {
   }
 
   #progress{
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     left: 48%;
   }
 
@@ -198,7 +192,7 @@ main {
     margin: 0.5rem 0; 
   }
 
-  #single-goal-view .goal-column-container{
+  #single-goal-view .goal-container{
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-areas: "card"
@@ -217,15 +211,7 @@ main {
 }
 
 @media only screen and (min-width: 992px){
-
-  #user-profile .goal-column-container {
-    column-count: 2;
-  }
-
-  #single-goal-view .goal-column-container{
-    margin: 0 15rem;
-  }
-
+  
   #cacheGrow{
     margin-top: 3.5rem;
     font-size: 4rem
@@ -235,6 +221,16 @@ main {
     margin-top: 1.5rem;
     font-size: 2.5rem
   }
+
+  #user-profile .goal-container{
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1.5rem;
+  }
+
+  #single-goal-view .goal-container{
+    margin: 0 15rem;
+  }
+
 } 
 
 #unassigned{
